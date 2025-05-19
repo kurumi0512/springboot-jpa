@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.exception.RoomException;
 import com.example.demo.model.dto.RoomDto;
 import com.example.demo.service.RoomService;
 
@@ -80,16 +82,16 @@ public class RoomController {
 	}
 
 	@DeleteMapping("/delete/{roomId}")
-	public String deleteBook(@PathVariable Integer roomId, @Valid RoomDto roomDto, BindingResult bindingResult,
-			Model model) {
-		// 驗證資料
-		if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
-			return "room/room_list";
-		}
+	public String deleteRoom(@PathVariable Integer roomId) {
+		roomService.deleteRoom(roomId);
+		return "redirect:/rooms"; // 重導到 /rooms 頁面
+	}
 
-		// 進行修改
-		roomService.updateRoom(roomId, roomDto);
-		return "redirect:/rooms";
+	@ExceptionHandler({ RoomException.class })
+	public String handleException(Exception e, Model model) {
+		e.printStackTrace();
+		model.addAttribute("message", e.getMessage());
+		return "error";
 	}
 
 }
