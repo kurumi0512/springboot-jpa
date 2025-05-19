@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -71,6 +72,19 @@ public class RoomController {
 		// 驗證資料
 		if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
 			return "room/room_update";
+		}
+
+		// 進行修改
+		roomService.updateRoom(roomId, roomDto);
+		return "redirect:/rooms";
+	}
+
+	@DeleteMapping("/delete/{roomId}")
+	public String deleteBook(@PathVariable Integer roomId, @Valid RoomDto roomDto, BindingResult bindingResult,
+			Model model) {
+		// 驗證資料
+		if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
+			return "room/room_list";
 		}
 
 		// 進行修改

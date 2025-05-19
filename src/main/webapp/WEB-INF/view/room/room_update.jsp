@@ -26,6 +26,7 @@
 								<legend>Room 表單修改</legend>
 								<input type="hidden" name="_method" value="PUT" />
 								Room 房號: <sp:input type="number" path="roomId" readonly="true" />
+								<sp:errors path="roomId" style="color: red" />
 								<p />
 								Room 名稱: <sp:input type="text" path="roomName" />
 								<sp:errors path="roomName" style="color: red" />
