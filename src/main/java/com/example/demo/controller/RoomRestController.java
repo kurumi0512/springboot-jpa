@@ -31,6 +31,7 @@ import com.example.demo.service.RoomService;
 
 @RestController
 @RequestMapping(value = { "/rest/room", "/rest/rooms" })
+//allowCredentials 與許接收客戶端傳來的資料
 @CrossOrigin(origins = { "http://localhost:5173", "http://localhost:8002" }, allowCredentials = "true")
 public class RoomRestController {
 
