@@ -73,7 +73,7 @@ public class RoomController {
 	public String updateRoom(@PathVariable Integer roomId, @Valid RoomDto roomDto, BindingResult bindingResult) {
 		// 驗證資料
 		if (bindingResult.hasErrors()) { // 若驗證時有錯誤發生
-			return "room/room_update";
+			return "room/room_update"; // 查到後就跑到update的畫面中
 		}
 
 		// 進行修改
