@@ -11,10 +11,10 @@ import com.example.demo.repository.RoomRepository;
 
 @SpringBootTest
 public class RoomJPATest {
-	
+
 	@Autowired
 	private RoomRepository roomRepository;
-	
+
 	@Test
 	public void testRoomAdd() {
 		Scanner scanner = new Scanner(System.in);
@@ -30,5 +30,5 @@ public class RoomJPATest {
 		room = roomRepository.save(room);
 		System.out.println("測試新增:" + room);
 	}
-	
+
 }
