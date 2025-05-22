@@ -17,6 +17,7 @@ public class CertServiceImpl implements CertService {
 	private UserRepository userRepository;
 
 	@Override
+	// 這是登入的概念,登入就要拿到一個憑證
 	// public UserCert getCert(String username, String password) throws
 	// CertException {
 	public UserCert getCert(String username, String password) throws UserNotFoundException, PasswordInvalidException {
