@@ -28,6 +28,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "users") // 可選:可以手動建立資料表名
 public class User {
 
+	// 定義資料表的結構
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自動生成 id
 	@Column(name = "user_id") // 資料表 user 中預設的欄位名稱
