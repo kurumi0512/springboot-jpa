@@ -13,7 +13,7 @@ import com.example.demo.service.CertService;
 
 @Service
 public class CertServiceImpl implements CertService {
-	@Autowired
+	@Autowired // 自動綁定
 	private UserRepository userRepository;
 
 	@Override
@@ -25,7 +25,7 @@ public class CertServiceImpl implements CertService {
 		if (user == null) {
 			throw new UserNotFoundException("查無此人");
 		}
-		// 2. 密碼 hash 比對
+		// 2. 密碼 hash 比對,把password跟資料庫salt拿出來
 		String passwordHash = Hash.getHash(password, user.getSalt());
 		if (!passwordHash.equals(user.getPasswordHash())) {
 			throw new PasswordInvalidException("密碼錯誤");
