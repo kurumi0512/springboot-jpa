@@ -20,7 +20,7 @@ public class UserMapper {
 
 	public User toEntity(UserDto userDto) {
 		// DTO 轉 Entity
-		return modelMapper.map(userDto, User.class);
+		return modelMapper.map(userDto, User.class); // ✅ 利用 ModelMapper 工具，把 UserDto 轉換成 User 實體類別。
 	}
 
 }
