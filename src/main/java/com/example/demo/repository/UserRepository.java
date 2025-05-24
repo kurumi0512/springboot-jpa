@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.entity.User;
 
+//加上 nativeQuery = true（使用原生 SQL）
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "select user_id, username, password_hash, salt, email, active, role from users where username=:username", nativeQuery = true)
